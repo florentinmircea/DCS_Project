@@ -186,6 +186,82 @@ public class First_Intersection {
         t4.Delay = 0;
         pn.Transitions.add(t4);
 
+        // --------------------------------------firstpart-------------------------------------------
+
+        // T2_in ------------------------------------------------
+        PetriTransition t2_in = new PetriTransition(pn);
+        t2_in.TransitionName = "T_i1";
+        t2_in.InputPlaceName.add("P10");
+        t2_in.InputPlaceName.add("P_I");
+
+        Condition T2_inCt1 = new Condition(t2_in, "P10", TransitionCondition.NotNull);
+        Condition T2_inCt2 = new Condition(t2_in, "P_I", TransitionCondition.CanAddCars);
+        T2_inCt1.SetNextCondition(LogicConnector.AND, T2_inCt2);
+
+        GuardMapping grdT2_in = new GuardMapping();
+        grdT2_in.condition = T2_inCt1;
+        grdT2_in.Activations.add(new Activation(t2_in, "P10", TransitionOperation.AddElement, "P_I"));
+        t2_in.GuardMappingList.add(grdT2_in);
+
+        t2_in.Delay = 0;
+        pn.Transitions.add(t2_in);
+
+        // T10_out-----------------------------------------------------------
+        PetriTransition t10_out = new PetriTransition(pn);
+        t10_out.TransitionName = "T_g1";
+        t10_out.InputPlaceName.add("P_I");
+        t10_out.InputPlaceName.add("P_o1");
+
+        Condition T10_outCt1 = new Condition(t10_out, "P_I", TransitionCondition.HaveCarForMe);
+        Condition T10_outCt2 = new Condition(t10_out, "P_o1", TransitionCondition.CanAddCars);
+        T10_outCt1.SetNextCondition(LogicConnector.AND, T10_outCt2);
+
+        GuardMapping grdT10_out = new GuardMapping();
+        grdT10_out.condition = T10_outCt1;
+        grdT10_out.Activations.add(new Activation(t10_out, "P_I", TransitionOperation.PopElementWithTargetToQueue, "P_o1"));
+        t10_out.GuardMappingList.add(grdT10_out);
+
+        t10_out.Delay = 0;
+        pn.Transitions.add(t10_out);
+
+        // --------------------------------------secondpart-------------------------------------------
+
+        // T5_in ------------------------------------------------
+        PetriTransition t5_in = new PetriTransition(pn);
+        t5_in.TransitionName = "T_i2";
+        t5_in.InputPlaceName.add("P14");
+        t5_in.InputPlaceName.add("P_I");
+
+        Condition T5_inCt1 = new Condition(t5_in, "P14", TransitionCondition.NotNull);
+        Condition T5_inCt2 = new Condition(t5_in, "P_I", TransitionCondition.CanAddCars);
+        T5_inCt1.SetNextCondition(LogicConnector.AND, T5_inCt2);
+
+        GuardMapping grdT5_in = new GuardMapping();
+        grdT5_in.condition = T5_inCt1;
+        grdT5_in.Activations.add(new Activation(t5_in, "P14", TransitionOperation.AddElement, "P_I"));
+        t5_in.GuardMappingList.add(grdT5_in);
+
+        t5_in.Delay = 0;
+        pn.Transitions.add(t5_in);
+
+        // T11_out-----------------------------------------------------------
+        PetriTransition t11_out = new PetriTransition(pn);
+        t11_out.TransitionName = "T_g2";
+        t11_out.InputPlaceName.add("P_I");
+        t11_out.InputPlaceName.add("P_o2");
+
+        Condition T11_outCt1 = new Condition(t11_out, "P_I", TransitionCondition.HaveCarForMe);
+        Condition T11_outCt2 = new Condition(t11_out, "P_o2", TransitionCondition.CanAddCars);
+        T11_outCt1.SetNextCondition(LogicConnector.AND, T11_outCt2);
+
+        GuardMapping grdT11_out = new GuardMapping();
+        grdT11_out.condition = T11_outCt1;
+        grdT11_out.Activations.add(new Activation(t11_out, "P_I", TransitionOperation.PopElementWithTargetToQueue, "P_o2"));
+        t11_out.GuardMappingList.add(grdT11_out);
+
+        t11_out.Delay = 0;
+        pn.Transitions.add(t11_out);
+
         // -------------------------------------------------------------------------------------
         // ----------------------------PNStart-------------------------------------------------
         // -------------------------------------------------------------------------------------
