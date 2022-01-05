@@ -19,248 +19,324 @@ public class First_Intersection {
         // -------------------------------Lane1--------------------------------
         // --------------------------------------------------------------------
 
-        DataCar p4 = new DataCar();
-        p4.SetName("P4");
-        pn.PlaceList.add(p4);
+        DataCar P_I1 = new DataCar();
+        P_I1.SetName("P_I1");
+        pn.PlaceList.add(P_I1);
 
-        DataCarQueue p9 = new DataCarQueue();
-        p9.Value.Size = 3;
-        p9.SetName("P9");
-        pn.PlaceList.add(p9);
+        DataCarQueue P_I2 = new DataCarQueue();
+        P_I2.Value.Size = 3;
+        P_I2.SetName("P_I2");
+        pn.PlaceList.add(P_I2);
 
-        DataString p11 = new DataString();
-        p11.SetName("P11");
-        pn.PlaceList.add(p11);
+        DataString P_TL1 = new DataString();
+        P_TL1.SetName("P_TL1");
+        pn.PlaceList.add(P_TL1);
 
-        DataCar p10 = new DataCar();
-        p10.SetName("P10");
-        pn.PlaceList.add(p10);
+        DataCar P_I3 = new DataCar();
+        P_I3.SetName("P_I3");
+        pn.PlaceList.add(P_I3);
 
         // -------------------------------------------------------------------
         // -------------------------------Lane2--------------------------------
         // --------------------------------------------------------------------
 
-        DataCar p12 = new DataCar();
-        p12.SetName("P12");
-        pn.PlaceList.add(p12);
+        DataCar P_I4 = new DataCar();
+        P_I4.SetName("P_I4");
+        pn.PlaceList.add(P_I4);
 
-        DataCarQueue p13 = new DataCarQueue();
-        p13.Value.Size = 3;
-        p13.SetName("P13");
-        pn.PlaceList.add(p13);
+        DataCarQueue P_I5 = new DataCarQueue();
+        P_I5.Value.Size = 3;
+        P_I5.SetName("P_I5");
+        pn.PlaceList.add(P_I5);
 
-        DataString p15 = new DataString();
-        p15.SetName("P15");
-        pn.PlaceList.add(p15);
+        DataString P_TL2 = new DataString();
+        P_TL2.SetName("P_TL2");
+        pn.PlaceList.add(P_TL2);
 
-        DataCar p14 = new DataCar();
-        p14.SetName("P14");
-        pn.PlaceList.add(p14);
+        DataCar P_I6 = new DataCar();
+        P_I6.SetName("P_I6");
+        pn.PlaceList.add(P_I6);
 
         // ----------------------------------------------------------------------------
         // ----------------------------Exit lane 1-------------------------------------
         // ----------------------------------------------------------------------------
 
-        DataCarQueue p21 = new DataCarQueue(); //p17.Printable = false;
-        p21.Value.Size = 3;
-        p21.SetName("P_o1");
-        pn.PlaceList.add(p21);
+        DataCarQueue P_O1 = new DataCarQueue(); //p17.Printable = false;
+        P_O1.Value.Size = 3;
+        P_O1.SetName("P_O1");
+        pn.PlaceList.add(P_O1);
 
 
         // ----------------------------------------------------------------------------
         // ----------------------------Exit lane 2-------------------------------------
         // ----------------------------------------------------------------------------
 
-        DataCarQueue p22 = new DataCarQueue(); //p17.Printable = false;
-        p22.Value.Size = 3;
-        p22.SetName("P_o2");
-        pn.PlaceList.add(p22);
+        DataCarQueue P_O3 = new DataCarQueue(); //p17.Printable = false;
+        P_O3.Value.Size = 3;
+        P_O3.SetName("P_O3");
+        pn.PlaceList.add(P_O3);
 
         // ----------------------------------------------------------------------------
         // ----------------------------Exit lane 3-------------------------------------
         // ----------------------------------------------------------------------------
 
-        DataCarQueue p20 = new DataCarQueue(); //p17.Printable = false;
-        p20.Value.Size = 3;
-        p20.SetName("P_o3");
-        pn.PlaceList.add(p20);
+        DataCarQueue P_O5 = new DataCarQueue(); //p17.Printable = false;
+        P_O5.Value.Size = 3;
+        P_O5.SetName("P_O5");
+        pn.PlaceList.add(P_O5);
 
         // -------------------------------------------------------------------------------------------
         // --------------------------------Intersection-----------------------------------------------
         // -------------------------------------------------------------------------------------------
 
-        DataCarQueue p0 = new DataCarQueue();
-        p0.Value.Size = 3;
-        p0.SetName("P_I");
-        pn.PlaceList.add(p0);
+        DataCarQueue P_INT1 = new DataCarQueue();
+        P_INT1.Value.Size = 3;
+        P_INT1.SetName("P_INT1");
+        pn.PlaceList.add(P_INT1);
 
-        // T1 ------------------------------------------------
-        PetriTransition t1 = new PetriTransition(pn);
-        t1.TransitionName = "T_u1";
-        t1.InputPlaceName.add("P4");
-        t1.InputPlaceName.add("P9");
+        // T_I1 ------------------------------------------------
+        PetriTransition T_I1 = new PetriTransition(pn);
+        T_I1.TransitionName = "T_I1";
+        T_I1.InputPlaceName.add("P_I1");
+        T_I1.InputPlaceName.add("P_I2");
 
-        Condition T1Ct1 = new Condition(t1, "P4", TransitionCondition.NotNull);
-        Condition T1Ct2 = new Condition(t1, "P9", TransitionCondition.CanAddCars);
+        Condition T1Ct1 = new Condition(T_I1, "P_I1", TransitionCondition.NotNull);
+        Condition T1Ct2 = new Condition(T_I1, "P_I2", TransitionCondition.CanAddCars);
         T1Ct1.SetNextCondition(LogicConnector.AND, T1Ct2);
 
-        Condition Tu1Ct1 = new Condition(t1, "P4", TransitionCondition.NotNull);
-        Condition Tu1Ct12 = new Condition(t1, "P9", TransitionCondition.CanNotAddCars);
+        Condition Tu1Ct1 = new Condition(T_I1, "P_I1", TransitionCondition.NotNull);
+        Condition Tu1Ct12 = new Condition(T_I1, "P_I2", TransitionCondition.CanNotAddCars);
         Tu1Ct1.SetNextCondition(LogicConnector.AND, Tu1Ct12);
 
         GuardMapping grdT1 = new GuardMapping();
         grdT1.condition = T1Ct1;
-        grdT1.Activations.add(new Activation(t1, "P4", TransitionOperation.AddElement, "P9"));
-        t1.GuardMappingList.add(grdT1);
+        grdT1.Activations.add(new Activation(T_I1, "P_I1", TransitionOperation.AddElement, "P_I2"));
+        T_I1.GuardMappingList.add(grdT1);
 
         GuardMapping grdTu1 = new GuardMapping();
         grdTu1.condition = Tu1Ct1;
-        grdTu1.Activations.add(new Activation(t1, "P9", TransitionOperation.Copy, "P9"));
-        t1.GuardMappingList.add(grdTu1);
+        grdTu1.Activations.add(new Activation(T_I1, "P_I2", TransitionOperation.Copy, "P_I2"));
+        T_I1.GuardMappingList.add(grdTu1);
 
-        t1.Delay = 0;
-        pn.Transitions.add(t1);
+        T_I1.Delay = 0;
+        pn.Transitions.add(T_I1);
 
-        // T2 ------------------------------------------------
-        PetriTransition t2 = new PetriTransition(pn);
-        t2.TransitionName = "T2";
-        t2.InputPlaceName.add("P9");
-        t2.InputPlaceName.add("P11");
+        // T_I2 ------------------------------------------------
+        PetriTransition T_I2 = new PetriTransition(pn);
+        T_I2.TransitionName = "T_I2";
+        T_I2.InputPlaceName.add("P_I2");
+        T_I2.InputPlaceName.add("P_TL1");
 
-        Condition T2Ct1 = new Condition(t2, "P11", TransitionCondition.Equal, "green");
-        Condition T2Ct2 = new Condition(t2, "P9", TransitionCondition.HaveCar);
+        Condition T2Ct1 = new Condition(T_I2, "P_TL1", TransitionCondition.Equal, "green");
+        Condition T2Ct2 = new Condition(T_I2, "P_I2", TransitionCondition.HaveCar);
         T2Ct1.SetNextCondition(LogicConnector.AND, T2Ct2);
 
         GuardMapping grdT2 = new GuardMapping();
         grdT2.condition = T2Ct1;
-        grdT2.Activations.add(new Activation(t2, "P9", TransitionOperation.PopElementWithoutTarget, "P10"));
-        grdT2.Activations.add(new Activation(t2, "P11", TransitionOperation.Move, "P11"));
+        grdT2.Activations.add(new Activation(T_I2, "P_I2", TransitionOperation.PopElementWithoutTarget, "P_I3"));
+        grdT2.Activations.add(new Activation(T_I2, "P_TL1", TransitionOperation.Move, "P_TL1"));
 
-        t2.GuardMappingList.add(grdT2);
-        t2.Delay = 0;
-        pn.Transitions.add(t2);
+        T_I2.GuardMappingList.add(grdT2);
+        T_I2.Delay = 0;
+        pn.Transitions.add(T_I2);
 
-        // T3 ------------------------------------------------
-        PetriTransition t3 = new PetriTransition(pn);
-        t3.TransitionName = "T_u2";
-        t3.InputPlaceName.add("P12");
-        t3.InputPlaceName.add("P13");
+        // T_I4 ------------------------------------------------
+        PetriTransition T_I4 = new PetriTransition(pn);
+        T_I4.TransitionName = "T_I4";
+        T_I4.InputPlaceName.add("P_I4");
+        T_I4.InputPlaceName.add("P_I5");
 
-        Condition T3Ct1 = new Condition(t3, "P12", TransitionCondition.NotNull);
-        Condition T3Ct2 = new Condition(t3, "P13", TransitionCondition.CanAddCars);
+        Condition T3Ct1 = new Condition(T_I4, "P_I4", TransitionCondition.NotNull);
+        Condition T3Ct2 = new Condition(T_I4, "P_I5", TransitionCondition.CanAddCars);
         T3Ct1.SetNextCondition(LogicConnector.AND, T3Ct2);
 
-        Condition Tu2Ct1 = new Condition(t3, "P12", TransitionCondition.NotNull);
-        Condition Tu2Ct12 = new Condition(t3, "P13", TransitionCondition.CanNotAddCars);
+        Condition Tu2Ct1 = new Condition(T_I4, "P_I4", TransitionCondition.NotNull);
+        Condition Tu2Ct12 = new Condition(T_I4, "P_I5", TransitionCondition.CanNotAddCars);
         Tu2Ct1.SetNextCondition(LogicConnector.AND, Tu2Ct12);
 
         GuardMapping grdT3 = new GuardMapping();
         grdT3.condition = T3Ct1;
-        grdT3.Activations.add(new Activation(t3, "P12", TransitionOperation.AddElement, "P13"));
-        t3.GuardMappingList.add(grdT3);
+        grdT3.Activations.add(new Activation(T_I4, "P_I4", TransitionOperation.AddElement, "P_I5"));
+        T_I4.GuardMappingList.add(grdT3);
 
         GuardMapping grdTu2 = new GuardMapping();
         grdTu2.condition = Tu2Ct1;
-        grdTu2.Activations.add(new Activation(t3, "P13", TransitionOperation.Copy, "P13"));
-        t3.GuardMappingList.add(grdTu2);
+        grdTu2.Activations.add(new Activation(T_I4, "P_I5", TransitionOperation.Copy, "P_I5"));
+        T_I4.GuardMappingList.add(grdTu2);
 
-        t3.Delay = 0;
-        pn.Transitions.add(t3);
+        T_I4.Delay = 0;
+        pn.Transitions.add(T_I4);
 
-        // T4 ------------------------------------------------
-        PetriTransition t4 = new PetriTransition(pn);
-        t4.TransitionName = "T4";
-        t4.InputPlaceName.add("P13");
-        t4.InputPlaceName.add("P15");
+        // T_I5 ------------------------------------------------
+        PetriTransition T_I5 = new PetriTransition(pn);
+        T_I5.TransitionName = "T_I5";
+        T_I5.InputPlaceName.add("P_I5");
+        T_I5.InputPlaceName.add("P_TL2");
 
-        Condition T4Ct1 = new Condition(t4, "P15", TransitionCondition.Equal, "green");
-        Condition T4Ct2 = new Condition(t4, "P13", TransitionCondition.HaveCar);
+        Condition T4Ct1 = new Condition(T_I5, "P_TL2", TransitionCondition.Equal, "green");
+        Condition T4Ct2 = new Condition(T_I5, "P_I5", TransitionCondition.HaveCar);
         T4Ct1.SetNextCondition(LogicConnector.AND, T4Ct2);
 
         GuardMapping grdT4 = new GuardMapping();
         grdT4.condition = T4Ct1;
-        grdT4.Activations.add(new Activation(t4, "P13", TransitionOperation.PopElementWithoutTarget, "P14"));
-        grdT4.Activations.add(new Activation(t4, "P15", TransitionOperation.Move, "P15"));
+        grdT4.Activations.add(new Activation(T_I5, "P_I5", TransitionOperation.PopElementWithoutTarget, "P_I6"));
+        grdT4.Activations.add(new Activation(T_I5, "P_TL2", TransitionOperation.Move, "P_TL2"));
 
-        t4.GuardMappingList.add(grdT4);
-        t4.Delay = 0;
-        pn.Transitions.add(t4);
+        T_I5.GuardMappingList.add(grdT4);
+        T_I5.Delay = 0;
+        pn.Transitions.add(T_I5);
 
         // --------------------------------------firstpart-------------------------------------------
 
-        // T2_in ------------------------------------------------
-        PetriTransition t2_in = new PetriTransition(pn);
-        t2_in.TransitionName = "T_i1";
-        t2_in.InputPlaceName.add("P10");
-        t2_in.InputPlaceName.add("P_I");
+        // T_I3 ------------------------------------------------
+        PetriTransition T_I3 = new PetriTransition(pn);
+        T_I3.TransitionName = "T_I3";
+        T_I3.InputPlaceName.add("P_I3");
+        T_I3.InputPlaceName.add("P_INT1");
 
-        Condition T2_inCt1 = new Condition(t2_in, "P10", TransitionCondition.NotNull);
-        Condition T2_inCt2 = new Condition(t2_in, "P_I", TransitionCondition.CanAddCars);
-        T2_inCt1.SetNextCondition(LogicConnector.AND, T2_inCt2);
+        Condition TI3_inCt1 = new Condition(T_I3, "P_I3", TransitionCondition.NotNull);
+        Condition TI3_inCt2 = new Condition(T_I3, "P_INT1", TransitionCondition.CanAddCars);
+        TI3_inCt1.SetNextCondition(LogicConnector.AND, TI3_inCt2);
 
-        GuardMapping grdT2_in = new GuardMapping();
-        grdT2_in.condition = T2_inCt1;
-        grdT2_in.Activations.add(new Activation(t2_in, "P10", TransitionOperation.AddElement, "P_I"));
-        t2_in.GuardMappingList.add(grdT2_in);
+        GuardMapping grdTI3_in = new GuardMapping();
+        grdTI3_in.condition = TI3_inCt1;
+        grdTI3_in.Activations.add(new Activation(T_I3, "P_I3", TransitionOperation.AddElement, "P_INT1"));
+        T_I3.GuardMappingList.add(grdTI3_in);
 
-        t2_in.Delay = 0;
-        pn.Transitions.add(t2_in);
+        T_I3.Delay = 0;
+        pn.Transitions.add(T_I3);
 
-        // T10_out-----------------------------------------------------------
-        PetriTransition t10_out = new PetriTransition(pn);
-        t10_out.TransitionName = "T_g1";
-        t10_out.InputPlaceName.add("P_I");
-        t10_out.InputPlaceName.add("P_o1");
+        // T_O1-----------------------------------------------------------
+        PetriTransition T_O1 = new PetriTransition(pn);
+        T_O1.TransitionName = "T_O1";
+        T_O1.InputPlaceName.add("P_INT1");
+        T_O1.InputPlaceName.add("P_O1");
 
-        Condition T10_outCt1 = new Condition(t10_out, "P_I", TransitionCondition.HaveCarForMe);
-        Condition T10_outCt2 = new Condition(t10_out, "P_o1", TransitionCondition.CanAddCars);
-        T10_outCt1.SetNextCondition(LogicConnector.AND, T10_outCt2);
+        Condition T_O1_Ct1 = new Condition(T_O1, "P_INT1", TransitionCondition.HaveCarForMe);
+        Condition T_O1_Ct2 = new Condition(T_O1, "P_O1", TransitionCondition.CanAddCars);
+        T_O1_Ct1.SetNextCondition(LogicConnector.AND, T_O1_Ct2);
 
-        GuardMapping grdT10_out = new GuardMapping();
-        grdT10_out.condition = T10_outCt1;
-        grdT10_out.Activations.add(new Activation(t10_out, "P_I", TransitionOperation.PopElementWithTargetToQueue, "P_o1"));
-        t10_out.GuardMappingList.add(grdT10_out);
+        GuardMapping grdT_O1 = new GuardMapping();
+        grdT_O1.condition = T_O1_Ct1;
+        grdT_O1.Activations.add(new Activation(T_O1, "P_INT1", TransitionOperation.PopElementWithTargetToQueue, "P_O1"));
+        T_O1.GuardMappingList.add(grdT_O1);
 
-        t10_out.Delay = 0;
-        pn.Transitions.add(t10_out);
+        T_O1.Delay = 0;
+        pn.Transitions.add(T_O1);
 
         // --------------------------------------secondpart-------------------------------------------
 
-        // T5_in ------------------------------------------------
-        PetriTransition t5_in = new PetriTransition(pn);
-        t5_in.TransitionName = "T_i2";
-        t5_in.InputPlaceName.add("P14");
-        t5_in.InputPlaceName.add("P_I");
+        // T_I6 ------------------------------------------------
+        PetriTransition T_I6 = new PetriTransition(pn);
+        T_I6.TransitionName = "T_I6";
+        T_I6.InputPlaceName.add("P_I6");
+        T_I6.InputPlaceName.add("P_INT1");
 
-        Condition T5_inCt1 = new Condition(t5_in, "P14", TransitionCondition.NotNull);
-        Condition T5_inCt2 = new Condition(t5_in, "P_I", TransitionCondition.CanAddCars);
-        T5_inCt1.SetNextCondition(LogicConnector.AND, T5_inCt2);
+        Condition T_I6_Ct1 = new Condition(T_I6, "P_I6", TransitionCondition.NotNull);
+        Condition T_I6_Ct2 = new Condition(T_I6, "P_INT1", TransitionCondition.CanAddCars);
+        T_I6_Ct1.SetNextCondition(LogicConnector.AND, T_I6_Ct2);
 
-        GuardMapping grdT5_in = new GuardMapping();
-        grdT5_in.condition = T5_inCt1;
-        grdT5_in.Activations.add(new Activation(t5_in, "P14", TransitionOperation.AddElement, "P_I"));
-        t5_in.GuardMappingList.add(grdT5_in);
+        GuardMapping grdT_I6 = new GuardMapping();
+        grdT_I6.condition = T_I6_Ct1;
+        grdT_I6.Activations.add(new Activation(T_I6, "P_I6", TransitionOperation.AddElement, "P_INT1"));
+        T_I6.GuardMappingList.add(grdT_I6);
 
-        t5_in.Delay = 0;
-        pn.Transitions.add(t5_in);
+        T_I6.Delay = 0;
+        pn.Transitions.add(T_I6);
 
-        // T11_out-----------------------------------------------------------
-        PetriTransition t11_out = new PetriTransition(pn);
-        t11_out.TransitionName = "T_g2";
-        t11_out.InputPlaceName.add("P_I");
-        t11_out.InputPlaceName.add("P_o2");
+        // T_O5-----------------------------------------------------------
+        PetriTransition T_O3 = new PetriTransition(pn);
+        T_O3.TransitionName = "T_O5";
+        T_O3.InputPlaceName.add("P_INT1");
+        T_O3.InputPlaceName.add("P_O3");
 
-        Condition T11_outCt1 = new Condition(t11_out, "P_I", TransitionCondition.HaveCarForMe);
-        Condition T11_outCt2 = new Condition(t11_out, "P_o2", TransitionCondition.CanAddCars);
-        T11_outCt1.SetNextCondition(LogicConnector.AND, T11_outCt2);
+        Condition T_O3_Ct1 = new Condition(T_O3, "P_INT1", TransitionCondition.HaveCarForMe);
+        Condition T_O3_Ct2 = new Condition(T_O3, "P_O3", TransitionCondition.CanAddCars);
+        T_O3_Ct1.SetNextCondition(LogicConnector.AND, T_O3_Ct2);
 
-        GuardMapping grdT11_out = new GuardMapping();
-        grdT11_out.condition = T11_outCt1;
-        grdT11_out.Activations.add(new Activation(t11_out, "P_I", TransitionOperation.PopElementWithTargetToQueue, "P_o2"));
-        t11_out.GuardMappingList.add(grdT11_out);
+        GuardMapping grdT_O3 = new GuardMapping();
+        grdT_O3.condition = T_O3_Ct1;
+        grdT_O3.Activations.add(new Activation(T_O3, "P_INT1", TransitionOperation.PopElementWithTargetToQueue, "P_O3"));
+        T_O3.GuardMappingList.add(grdT_O3);
 
-        t11_out.Delay = 0;
-        pn.Transitions.add(t11_out);
+        T_O3.Delay = 0;
+        pn.Transitions.add(T_O3);
+
+        // --------------------------------------thirdpart-------------------------------------------
+
+        // T_M1 ------------------------------------------------
+        PetriTransition T_M1 = new PetriTransition(pn);
+        T_M1.TransitionName = "T_M1";
+        T_M1.InputPlaceName.add("P_M1");
+        T_M1.InputPlaceName.add("P_INT1");
+
+        Condition T_M1_Ct1 = new Condition(T_M1, "P_M1", TransitionCondition.NotNull);
+        Condition T_M1_Ct2 = new Condition(T_M1, "P_INT1", TransitionCondition.CanAddCars);
+        T_M1_Ct1.SetNextCondition(LogicConnector.AND, T_M1_Ct2);
+
+        GuardMapping grdT_M1 = new GuardMapping();
+        grdT_M1.condition = T_M1_Ct1;
+        grdT_M1.Activations.add(new Activation(T_M1, "P_M1", TransitionOperation.AddElement, "P_INT1"));
+        T_M1.GuardMappingList.add(grdT_M1);
+
+        T_M1.Delay = 0;
+        pn.Transitions.add(T_M1);
+
+        // T_O5-----------------------------------------------------------
+        PetriTransition T_O5 = new PetriTransition(pn);
+        T_O5.TransitionName = "T_O5";
+        T_O5.InputPlaceName.add("P_INT1");
+        T_O5.InputPlaceName.add("P_O5");
+
+        Condition T_O5_Ct1 = new Condition(T_O5, "P_INT1", TransitionCondition.HaveCarForMe);
+        Condition T_O5_Ct2 = new Condition(T_O5, "P_O5", TransitionCondition.CanAddCars);
+        T_O5_Ct1.SetNextCondition(LogicConnector.AND, T_O5_Ct2);
+
+        GuardMapping grdT_O5 = new GuardMapping();
+        grdT_O5.condition = T_O5_Ct1;
+        grdT_O5.Activations.add(new Activation(T_O5, "P_INT1", TransitionOperation.PopElementWithTargetToQueue, "P_O5"));
+        T_O5.GuardMappingList.add(grdT_O5);
+
+        T_O5.Delay = 0;
+        pn.Transitions.add(T_O5);
+
+        // --------------------------------------fourthpart-------------------------------------------
+
+        // T_M6 ------------------------------------------------
+        PetriTransition T_M6 = new PetriTransition(pn);
+        T_M6.TransitionName = "T_M6";
+        T_M6.InputPlaceName.add("P_M4");
+        T_M6.InputPlaceName.add("P_INT1");
+
+        Condition T_M6_Ct1 = new Condition(T_M6, "P_M4", TransitionCondition.NotNull);
+        Condition T_M6_Ct2 = new Condition(T_M6, "P_INT1", TransitionCondition.CanAddCars);
+        T_M6_Ct1.SetNextCondition(LogicConnector.AND, T_M6_Ct2);
+
+        GuardMapping grdT_M6 = new GuardMapping();
+        grdT_M6.condition = T_M6_Ct1;
+        grdT_M6.Activations.add(new Activation(T_M6, "P_M4", TransitionOperation.AddElement, "P_INT1"));
+        T_M1.GuardMappingList.add(grdT_M1);
+
+        T_M1.Delay = 0;
+        pn.Transitions.add(T_M1);
+
+        // T_O5-----------------------------------------------------------
+//        PetriTransition T_O5 = new PetriTransition(pn);
+        T_O5.TransitionName = "T_O5";
+        T_O5.InputPlaceName.add("P_INT1");
+        T_O5.InputPlaceName.add("P_O5");
+
+        Condition T_O5_Ct3 = new Condition(T_O5, "P_INT1", TransitionCondition.HaveCarForMe);
+        Condition T_O5_Ct4 = new Condition(T_O5, "P_O5", TransitionCondition.CanAddCars);
+        T_O5_Ct3.SetNextCondition(LogicConnector.AND, T_O5_Ct4);
+
+        GuardMapping grdT_O5_1 = new GuardMapping();
+        grdT_O5_1.condition = T_O5_Ct3;
+        grdT_O5_1.Activations.add(new Activation(T_O5, "P_INT1", TransitionOperation.PopElementWithTargetToQueue, "P_O5"));
+        T_O5.GuardMappingList.add(grdT_O5);
+
+        T_O5.Delay = 0;
+        pn.Transitions.add(T_O5);
 
         // -------------------------------------------------------------------------------------
         // ----------------------------PNStart-------------------------------------------------
