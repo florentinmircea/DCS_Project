@@ -15,7 +15,7 @@ public class Controller {
         PetriNet pn = new PetriNet();
         pn.PetriNetName = "Controller";
         pn.SetName("Controller");
-        pn.NetworkPort = 1082;
+        pn.NetworkPort = 1081;
 
         DataString ini = new DataString();
         //ini.Printable = false;
@@ -114,27 +114,27 @@ public class Controller {
 
         DataTransfer p18 = new DataTransfer();
         p18.SetName("OP3");
-        p18.Value = new TransferOperation("localhost", "1081", "P_TL5");
+        p18.Value = new TransferOperation("localhost", "1080", "P_TL5");
         pn.PlaceList.add(p18);
 
         DataTransfer p19 = new DataTransfer();
         p19.SetName("OP4");
-        p19.Value = new TransferOperation("localhost", "1081", "P_TL6");
+        p19.Value = new TransferOperation("localhost", "1080", "P_TL6");
         pn.PlaceList.add(p19);
 
         DataTransfer p20 = new DataTransfer();
         p20.SetName("OP5");
-        p20.Value = new TransferOperation("localhost", "1081", "P_TL7");
+        p20.Value = new TransferOperation("localhost", "1080", "P_TL7");
         pn.PlaceList.add(p20);
 
         DataTransfer p21 = new DataTransfer();
         p21.SetName("OP6");
-        p21.Value = new TransferOperation("localhost", "1081", "P_TL3");
+        p21.Value = new TransferOperation("localhost", "1080", "P_TL3");
         pn.PlaceList.add(p21);
 
         DataTransfer p22 = new DataTransfer();
         p22.SetName("OP7");
-        p22.Value = new TransferOperation("localhost", "1081", "P_TL4");
+        p22.Value = new TransferOperation("localhost", "1080", "P_TL4");
         pn.PlaceList.add(p22);
 
         //----------------------------iniT------------------------------------

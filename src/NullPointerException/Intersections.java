@@ -13,7 +13,7 @@ import Enumerations.TransitionOperation;
 public class Intersections {
     public static void main(String[] args) {
         PetriNet pn = new PetriNet();
-        pn.PetriNetName = "First Intersection";
+        pn.PetriNetName = "Lanes Intersection";
 
         pn.NetworkPort = 1080;
 
@@ -86,6 +86,10 @@ public class Intersections {
         OP6.Value=new TransferOperation("localhost","1081","in6");
         OP6.SetName("OP6");
         pn.PlaceList.add(OP6);
+
+        DataString P_TL4 = new DataString();
+        P_TL4.SetName("P_TL4");
+        pn.PlaceList.add(P_TL4);
 
 
         // ----------------------------------------------------------------------------
@@ -385,7 +389,7 @@ public class Intersections {
 
         GuardMapping grdT_M1 = new GuardMapping();
         grdT_M1.condition = T_M1_Ct1;
-        grdT_M1.Activations.add(new Activation(T_M1, "P_INT1", TransitionOperation.AddElement, "P_M1"));
+        grdT_M1.Activations.add(new Activation(T_M1, "P_INT1", TransitionOperation.PopElementWithTargetToQueue, "P_M1"));
         T_M1.GuardMappingList.add(grdT_M1);
 
         Condition T_M1_Ct3 = new Condition(T_M1, "P_INT1", TransitionCondition.HaveCarForMe);
@@ -414,10 +418,10 @@ public class Intersections {
         GuardMapping grdT_M6 = new GuardMapping();
         grdT_M6.condition = T_M6_Ct1;
         grdT_M6.Activations.add(new Activation(T_M6, "P_M4", TransitionOperation.AddElement, "P_INT1"));
-        T_M1.GuardMappingList.add(grdT_M1);
+        T_M6.GuardMappingList.add(grdT_M6);
 
-        T_M1.Delay = 0;
-        pn.Transitions.add(T_M1);
+        T_M6.Delay = 0;
+        pn.Transitions.add(T_M6);
 
         // -------------------------------------------------------------------
         // -------------------------------Second Intersection------------------
@@ -508,6 +512,10 @@ public class Intersections {
         OP7.Value=new TransferOperation("localhost","1081","in7");
         OP7.SetName("OP7");
         pn.PlaceList.add(OP7);
+
+        DataString P_TL3 = new DataString();
+        P_TL3.SetName("P_TL3");
+        pn.PlaceList.add(P_TL3);
 
         // ----------------------------------------------------------------------------
         // ----------------------------Exit lane 1-------------------------------------
@@ -844,10 +852,10 @@ public class Intersections {
         GuardMapping grdT_M4 = new GuardMapping();
         grdT_M4.condition = T_M4_Ct1;
         grdT_M4.Activations.add(new Activation(T_M4, "P_INT2", TransitionOperation.AddElement, "P_M3"));
-        T_M1.GuardMappingList.add(grdT_M4);
+        T_M4.GuardMappingList.add(grdT_M4);
 
-        Condition T_M4_Ct3 = new Condition(T_M1, "P_INT2", TransitionCondition.HaveCarForMe);
-        Condition T_M4_Ct4 = new Condition(T_M1, "P_M3", TransitionCondition.CanNotAddCars);
+        Condition T_M4_Ct3 = new Condition(T_M4, "P_INT2", TransitionCondition.HaveCarForMe);
+        Condition T_M4_Ct4 = new Condition(T_M4, "P_M3", TransitionCondition.CanNotAddCars);
         T_M4_Ct3.SetNextCondition(LogicConnector.AND,T_M4_Ct4);
 
         GuardMapping grdT_M4_2 = new GuardMapping();
