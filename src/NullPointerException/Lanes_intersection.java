@@ -90,10 +90,6 @@ public class Lanes_intersection {
         // -------------------------------Lane3--------------------------------
         // --------------------------------------------------------------------
 
-//        DataCar P_M3_in = new DataCar();
-//        P_M3_in.SetName("P_M3_in");
-//        pn.PlaceList.add(P_M3_in);
-
         DataCarQueue P_M3 = new DataCarQueue();
         P_M3.Value.Size = 3;
         P_M3.SetName("P_M3");
@@ -106,11 +102,6 @@ public class Lanes_intersection {
         DataCar P_M4 = new DataCar();
         P_M4.SetName("P_M4");
         pn.PlaceList.add(P_M4);
-
-//        DataTransfer OP7 = new DataTransfer();
-//        OP7.SetName("OP7");
-//        OP7.Value=new TransferOperation("localhost","1081","in7");
-//        pn.PlaceList.add(OP7);
 
         // ----------------------------------------------------------------------------
         // ----------------------------Exit lane 1-------------------------------------
@@ -150,19 +141,6 @@ public class Lanes_intersection {
         DataCar P_O4 = new DataCar();
         P_O4.SetName("P_O4");
         pn.PlaceList.add(P_O4);
-
-        // ----------------------------------------------------------------------------
-        // ----------------------------Exit lane 4-------------------------------------
-        // ----------------------------------------------------------------------------
-
-        DataCarQueue P_M1 = new DataCarQueue();
-        P_M1.Value.Size = 3;
-        P_M1.SetName("P_M1");
-        pn.PlaceList.add(P_M1);
-
-//        DataCar P_M2 = new DataCar();
-//        P_M2.SetName("P_M2");
-//        pn.PlaceList.add(P_M2);
 
         // -------------------------------------------------------------------
         // -------------------------------Int2--------------------------------
@@ -250,9 +228,9 @@ public class Lanes_intersection {
         // -------------------------------Lane4--------------------------------
         // --------------------------------------------------------------------
 
-        DataCarQueue P_X2 = new DataCarQueue();
-        P_X2.SetName("P_X2");
-        pn.PlaceList.add(P_X2);
+        DataCarQueue P_M1 = new DataCarQueue();
+        P_M1.SetName("P_M1");
+        pn.PlaceList.add(P_M1);
 
         DataString P_TL3 = new DataString();
         P_TL3.SetName("P_TL3");
@@ -262,10 +240,6 @@ public class Lanes_intersection {
         P_M2.SetName("P_M2");
         pn.PlaceList.add(P_M2);
 
-//        DataTransfer OP6 = new DataTransfer();
-//        OP6.SetName("OP6");
-//        OP6.Value = new TransferOperation("localhost", "1083" , "in6");
-//        pn.PlaceList.add(OP6);
 
         // ----------------------------------------------------------------------------
         // ----------------------------Exit lane 1-------------------------------------
@@ -292,19 +266,6 @@ public class Lanes_intersection {
         DataCar P_O10 = new DataCar(); //p18.Printable = false;
         P_O10.SetName("P_O10");
         pn.PlaceList.add(P_O10);
-
-        // ----------------------------------------------------------------------------
-        // ----------------------------Exit lane 3-------------------------------------
-        // ----------------------------------------------------------------------------
-
-        DataCarQueue P_M3_in = new DataCarQueue(); //p17.Printable = false;
-        P_M3_in.Value.Size = 3;
-        P_M3_in.SetName("P_M3_in");
-        pn.PlaceList.add(P_M3_in);
-
-//        DataCar P_O10 = new DataCar(); //p18.Printable = false;
-//        P_O10.SetName("P_O10");
-//        pn.PlaceList.add(P_O10);
 
 
         // -------------------------------------------------------------------------------------------
@@ -411,34 +372,6 @@ public class Lanes_intersection {
         T_I5.Delay = 0;
         pn.Transitions.add(T_I5);
 
-        // T_M4 ------------------------------------------------
-//        PetriTransition T_M4 = new PetriTransition(pn);
-//        T_M4.TransitionName = "T_M4";
-//        T_M4.InputPlaceName.add("P_M3_in");
-//        T_M4.InputPlaceName.add("P_M3");
-//
-//        Condition T5Ct1 = new Condition(T_M4, "P_M3_in", TransitionCondition.NotNull);
-//        Condition T5Ct2 = new Condition(T_M4, "P_M3", TransitionCondition.CanAddCars);
-//        T5Ct1.SetNextCondition(LogicConnector.AND, T5Ct2);
-//
-//        GuardMapping grdT5 = new GuardMapping();
-//        grdT5.condition = T5Ct1;
-//        grdT5.Activations.add(new Activation(T_M4, "P_M3_in", TransitionOperation.AddElement, "P_M3"));
-//        T_M4.GuardMappingList.add(grdT5);
-//
-//        Condition T5Ct3 = new Condition(T_M4, "P_M3_in", TransitionCondition.NotNull);
-//        Condition T5Ct4 = new Condition(T_M4, "P_M3", TransitionCondition.CanNotAddCars);
-//        T5Ct3.SetNextCondition(LogicConnector.AND, T5Ct4);
-//
-//        GuardMapping grdT5_1 = new GuardMapping();
-//        grdT5_1.condition = T5Ct3;
-//        grdT5_1.Activations.add(new Activation(T_M4, "full", TransitionOperation.SendOverNetwork, "oP3"));
-//        grdT5_1.Activations.add(new Activation(T_M4, "P_M3_in", TransitionOperation.Copy, "P_M3_in"));
-//        T_M4.GuardMappingList.add(grdT5_1);
-//
-//        T_M4.Delay = 0;
-//        pn.Transitions.add(T_M4);
-
         // T_M5 ------------------------------------------------
         PetriTransition T_M5 = new PetriTransition(pn);
         T_M5.TransitionName = "T_M5";
@@ -505,22 +438,6 @@ public class Lanes_intersection {
 
         T_O4.Delay = 0;
         pn.Transitions.add(T_O4);
-
-//        // T_M2----------------------------------------------------------------
-//        // poate nu trb ?
-//        PetriTransition T_M2 = new PetriTransition(pn);
-//        T_M2.TransitionName = "T_M2";
-//        T_M2.InputPlaceName.add("P_M1");
-//
-//        Condition T11Ct1 = new Condition(T_M2, "P_M1", TransitionCondition.NotNull);
-//
-//        GuardMapping grdT11 = new GuardMapping();
-//        grdT11.condition = T11Ct1;
-//        grdT11.Activations.add(new Activation(T_M2, "P_M1", TransitionOperation.SendOverNetwork, "P_o3Exit"));
-//        T_M2.GuardMappingList.add(grdT11);
-//
-//        T_M2.Delay = 0;
-//        pn.Transitions.add(T_M2);
 
         // T_I3------------------------------------------------
         PetriTransition T_I3 = new PetriTransition(pn);
@@ -639,31 +556,11 @@ public class Lanes_intersection {
 
         GuardMapping grdT_M1 = new GuardMapping();
         grdT_M1.condition = T_M1_Ct1;
-        grdT_M1.Activations.add(new Activation(T_M1, "P_INT1", TransitionOperation.PopElementWithTarget, "P_M1"));
+        grdT_M1.Activations.add(new Activation(T_M1, "P_INT1", TransitionOperation.PopElementWithTargetToQueue, "P_M1"));
         T_M1.GuardMappingList.add(grdT_M1);
 
         T_M1.Delay = 2;
         pn.Transitions.add(T_M1);
-
-        //aici
-
-        // T_M1_next----------------------------------------------------------
-        PetriTransition T_M1_next = new PetriTransition(pn);
-        T_M1_next.TransitionName = "T_M1_next";
-        T_M1_next.InputPlaceName.add("P_M1");
-        T_M1_next.InputPlaceName.add("P_X2");
-
-        Condition T_M1_next_Ct1 = new Condition(T_M1_next, "P_M1", TransitionCondition.HaveCarForMe);
-        Condition T_M1_next_Ct2 = new Condition(T_M1_next, "P_X2", TransitionCondition.CanAddCars);
-        T_M1_next_Ct1.SetNextCondition(LogicConnector.AND, T_M1_next_Ct2);
-
-        GuardMapping grdT_M1_next = new GuardMapping();
-        grdT_M1_next.condition = T_M1_next_Ct1;
-        grdT_M1_next.Activations.add(new Activation(T_M1_next, "P_M1", TransitionOperation.PopElementWithTargetToQueue, "P_X2"));
-        T_M1_next.GuardMappingList.add(grdT_M1_next);
-
-        T_M1_next.Delay = 2;
-        pn.Transitions.add(T_M1_next);
 
         // -------------------------------------------------------------------------------------------
         // --------------------------------Intersection2-----------------------------------------------
@@ -674,20 +571,20 @@ public class Lanes_intersection {
         P_INT2.SetName("P_INT2");
         pn.PlaceList.add(P_INT2);
 
-        // T4 ------------------------------------------------
+        // T_M2 ------------------------------------------------
         PetriTransition T_M2 = new PetriTransition(pn);
         T_M2.TransitionName = "T_M2";
-        T_M2.InputPlaceName.add("P_X2");
-        T_M2.InputPlaceName.add("P_TL2");
+        T_M2.InputPlaceName.add("P_M1");
+        T_M2.InputPlaceName.add("P_TL3");
 
-        Condition T_M2_Ct1 = new Condition(T_M2, "P_TL2", TransitionCondition.Equal, "green");
-        Condition T_M2_Ct2 = new Condition(T_M2, "P_X2", TransitionCondition.HaveCar);
+        Condition T_M2_Ct1 = new Condition(T_M2, "P_TL3", TransitionCondition.Equal, "green");
+        Condition T_M2_Ct2 = new Condition(T_M2, "P_M1", TransitionCondition.HaveCar);
         T_M2_Ct1.SetNextCondition(LogicConnector.AND, T_M2_Ct2);
 
         GuardMapping grdT_M2 = new GuardMapping();
         grdT_M2.condition = T_M2_Ct1;
-        grdT_M2.Activations.add(new Activation(T_M2, "P_X2", TransitionOperation.PopElementWithoutTarget, "P_M2"));
-        grdT_M2.Activations.add(new Activation(T_M2, "P_TL2", TransitionOperation.Move, "P_TL2"));
+        grdT_M2.Activations.add(new Activation(T_M2, "P_M1", TransitionOperation.PopElementWithoutTarget, "P_M2"));
+        grdT_M2.Activations.add(new Activation(T_M2, "P_TL3", TransitionOperation.Move, "P_TL3"));
         T_M2.GuardMappingList.add(grdT_M2);
 
         T_M2.Delay = 0;
@@ -864,21 +761,6 @@ public class Lanes_intersection {
         T_O10.Delay = 0;
         pn.Transitions.add(T_O10);
 
-//        // T_M4---------------------------------------------------------------
-//        PetriTransition T_M4_next = new PetriTransition(pn);
-//        T_M4_next.TransitionName = "T_M4_next";
-//        T_M4_next.InputPlaceName.add("P_M3_in");
-//
-//        Condition T_M4_next_Ct1 = new Condition(T_M4_next, "P_M3_in", TransitionCondition.NotNull);
-//
-//        GuardMapping grdT_M4_next = new GuardMapping();
-//        grdT_M4_next.condition = T_M4_next_Ct1;
-//        grdT_M4_next.Activations.add(new Activation(T_M4_next, "P_M3_in", TransitionOperation.PopElementWithTargetToQueue, "P_M3"));
-//        T_M4_next.GuardMappingList.add(grdT_M4_next);
-//
-//        T_M4_next.Delay = 0;
-//        pn.Transitions.add(T_M4_next);
-
         // T_O9----------------------------------------------------------
         PetriTransition T_O9 = new PetriTransition(pn);
         T_O9.TransitionName = "T_O9";
@@ -937,13 +819,13 @@ public class Lanes_intersection {
         PetriTransition T_M4 = new PetriTransition(pn);
         T_M4.TransitionName = "T_M4";
         T_M4.InputPlaceName.add("P_INT2");
-        T_M4.InputPlaceName.add("P_M3_in");
+        T_M4.InputPlaceName.add("P_M3");
 
         Condition T_M4_Ct1 = new Condition(T_M4, "P_INT2", TransitionCondition.HaveCarForMe);
 
         GuardMapping grdT_M4 = new GuardMapping();
         grdT_M4.condition = T_M4_Ct1;
-        grdT_M4.Activations.add(new Activation(T_M4, "P_INT2", TransitionOperation.PopElementWithTarget, "P_M3_in"));
+        grdT_M4.Activations.add(new Activation(T_M4, "P_INT2", TransitionOperation.PopElementWithTargetToQueue, "P_M3"));
         T_M4.GuardMappingList.add(grdT_M4);
 
         T_M4.Delay = 2;
