@@ -103,6 +103,11 @@ public class Lanes_intersection {
         P_M4.SetName("P_M4");
         pn.PlaceList.add(P_M4);
 
+        DataTransfer OP7 = new DataTransfer();
+        OP7.SetName("OP7");
+        OP7.Value=new TransferOperation("localhost","1081","in7");
+        pn.PlaceList.add(OP7);
+
         // ----------------------------------------------------------------------------
         // ----------------------------Exit lane 1-------------------------------------
         // ----------------------------------------------------------------------------
@@ -239,6 +244,11 @@ public class Lanes_intersection {
         DataCar P_M2 = new DataCar();
         P_M2.SetName("P_M2");
         pn.PlaceList.add(P_M2);
+
+        DataTransfer OP6 = new DataTransfer();
+        OP6.Value=new TransferOperation("localhost","1082","in6");
+        OP6.SetName("OP6");
+        pn.PlaceList.add(OP6);
 
 
         // ----------------------------------------------------------------------------
@@ -553,11 +563,23 @@ public class Lanes_intersection {
         T_M1.InputPlaceName.add("P_M1");
 
         Condition T_M1_Ct1 = new Condition(T_M1, "P_INT1", TransitionCondition.HaveCarForMe);
+        Condition T_M1_Ct2 = new Condition(T_M1, "P_M1", TransitionCondition.CanAddCars);
+        T_M1_Ct1.SetNextCondition(LogicConnector.AND, T_M1_Ct2);
 
         GuardMapping grdT_M1 = new GuardMapping();
         grdT_M1.condition = T_M1_Ct1;
         grdT_M1.Activations.add(new Activation(T_M1, "P_INT1", TransitionOperation.PopElementWithTargetToQueue, "P_M1"));
         T_M1.GuardMappingList.add(grdT_M1);
+
+        Condition T_M1_Ct3 = new Condition(T_M1, "P_INT1", TransitionCondition.HaveCarForMe);
+        Condition T_M1_Ct4 = new Condition(T_M1, "P_M1", TransitionCondition.CanNotAddCars);
+        T_M1_Ct3.SetNextCondition(LogicConnector.AND, T_M1_Ct4);
+
+        GuardMapping grdT_M1_1 = new GuardMapping();
+        grdT_M1_1.condition = T_M1_Ct3;
+        grdT_M1_1.Activations.add(new Activation(T_M1, "P_INT1", TransitionOperation.Copy, "P_INT1"));
+        grdT_M1_1.Activations.add(new Activation(T_M1, "full", TransitionOperation.SendOverNetwork, "OP6"));
+        T_M1.GuardMappingList.add(grdT_M1_1);
 
         T_M1.Delay = 2;
         pn.Transitions.add(T_M1);
@@ -673,7 +695,7 @@ public class Lanes_intersection {
 
         Condition T8Ct1 = new Condition(T_I11, "P_TL6", TransitionCondition.Equal, "green");
         Condition T8Ct2 = new Condition(T_I11, "P_I11", TransitionCondition.HaveCar);
-        T6Ct1.SetNextCondition(LogicConnector.AND, T8Ct2);
+        T8Ct1.SetNextCondition(LogicConnector.AND, T8Ct2);
 
         GuardMapping grdT8 = new GuardMapping();
         grdT8.condition = T8Ct1;
@@ -822,14 +844,28 @@ public class Lanes_intersection {
         T_M4.InputPlaceName.add("P_M3");
 
         Condition T_M4_Ct1 = new Condition(T_M4, "P_INT2", TransitionCondition.HaveCarForMe);
+        Condition T_M4_Ct2 = new Condition(T_M4, "P_M3", TransitionCondition.CanAddCars);
+        T_M4_Ct1.SetNextCondition(LogicConnector.AND, T_M4_Ct2);
 
         GuardMapping grdT_M4 = new GuardMapping();
         grdT_M4.condition = T_M4_Ct1;
         grdT_M4.Activations.add(new Activation(T_M4, "P_INT2", TransitionOperation.PopElementWithTargetToQueue, "P_M3"));
         T_M4.GuardMappingList.add(grdT_M4);
 
+        Condition T_M4_Ct3 = new Condition(T_M4, "P_INT2", TransitionCondition.HaveCarForMe);
+        Condition T_M4_Ct4 = new Condition(T_M4, "P_M3", TransitionCondition.CanNotAddCars);
+        T_M4_Ct3.SetNextCondition(LogicConnector.AND, T_M4_Ct4);
+
+        GuardMapping grdT_M4_1 = new GuardMapping();
+        grdT_M4_1.condition = T_M4_Ct3;
+        grdT_M4_1.Activations.add(new Activation(T_M4, "P_INT2", TransitionOperation.Move, "P_INT2"));
+        grdT_M4_1.Activations.add(new Activation(T_M4, "full", TransitionOperation.SendOverNetwork, "OP7"));
+        T_M4.GuardMappingList.add(grdT_M4_1);
+
         T_M4.Delay = 2;
         pn.Transitions.add(T_M4);
+
+
 
         // T_I15-----------------------------------------------
         PetriTransition T_I15 = new PetriTransition(pn);
