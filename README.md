@@ -1,2 +1,2 @@
 # DCS_Project
-<embed src="DCS Project Report.pdf" type="application/pdf">
+<object data="DCS Project Report.pdf" width="1000" height="1000" type='application/pdf'></object>
